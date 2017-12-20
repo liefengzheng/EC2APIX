@@ -35,9 +35,11 @@ app.use('/', web2webcontroller);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.statusCode = 404;
+  res.end(`The url is not found!`);
+  // var err = new Error('Not Found');
+  // err.status = 404;
+  // next(err);
 });
 
 // error handlers
@@ -64,8 +66,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// var db = require('./provider/db');
-// var userController = require('./controller/usercontroller');
-// app.use('/',userController);
+//注册模板引擎的 callback 用来处理ext扩展名的文件 默认情况下, 根据文件扩展名require() 对应的模板引擎
+// 比如你想渲染一个 "foo.jade" 文件，Express会在内部执行下面的代码，然后会缓存require()，这样就可以提高后面操作的性能
+app.engine('jade', require('jade').__express);
 
 module.exports = app;

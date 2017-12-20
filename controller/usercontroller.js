@@ -12,6 +12,12 @@ router.get('/v01/entry/count/segments/products', function(req,res){
     // res.send('respond with a resource with segments');
 });
 
+function productsCallback(req,res,next){
+    res.status(200).send("The call back function is triggered.");
+}
+
+router.get('/v01/entry/callback', productsCallback);
+
 router.get('/v01/entry/count/segments/products/:paraname', function(req,res){
     User.findOne({'firstName':req.params.paraname},function(err,User){
         if(err) return res.status(500).send("There was a problem finding the users.");

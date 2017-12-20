@@ -1,6 +1,6 @@
 class Status{
-    constructor(start, pending, completed,failed){
-        this.start = start;
+    constructor(ready, pending, completed,failed){
+        this.ready = ready;
         this.pending = pending;
         this.completed = completed;
         this.failed = failed;
